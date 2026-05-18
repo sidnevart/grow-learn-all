@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Token Economy Kit — экономия токенов для команды</title>
+<style>
+  :root {
+    --bg: #f8f8f6;
+    --surface: #ffffff;
+    --border: #e8e6e0;
+    --text: #1a1a18;
+    --text-muted: #6b6860;
+    --accent: #2d6a4f;
+    --accent-light: #e8f5ef;
+    --warn: #b45309;
+    --warn-light: #fef3c7;
+    --code-bg: #1e1e2e;
+    --code-text: #cdd6f4;
+    --green: #166534;
+    --green-bg: #dcfce7;
+    --sidebar-w: 240px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.65; font-size: 15px;
+  }
+  nav {
+    position: fixed; top: 0; left: 0; width: var(--sidebar-w);
+    height: 100vh; background: var(--surface); border-right: 1px solid var(--border);
+    overflow-y: auto; padding: 24px 0; z-index: 10;
+  }
+  nav .logo {
+    padding: 0 20px 20px; font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted);
+    border-bottom: 1px solid var(--border); margin-bottom: 12px;
+  }
+  nav a {
+    display: block; padding: 6px 20px; color: var(--text-muted);
+    text-decoration: none; font-size: 13.5px; border-left: 2px solid transparent; transition: all .15s;
+  }
+  nav a:hover { color: var(--text); background: var(--bg); }
+  nav a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 500; }
+  nav .section-label {
+    padding: 14px 20px 4px; font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .1em; color: #aaa9a4;
+  }
+  main { margin-left: var(--sidebar-w); padding: 48px 56px 80px; max-width: calc(var(--sidebar-w) + 860px); }
+  section { margin-bottom: 64px; scroll-margin-top: 32px; }
+  h2 { font-size: 21px; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+  h3 { font-size: 13px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin: 28px 0 10px; }
+  p { margin-bottom: 14px; }
+  p:last-child { margin-bottom: 0; }
+  ul, ol { padding-left: 20px; margin-bottom: 14px; }
+  li { margin-bottom: 5px; }
+  code {
+    background: #f0ede6; color: #c0392b; padding: 1px 6px;
+    border-radius: 4px; font-size: 13px; font-family: "SF Mono", Menlo, Consolas, monospace;
+  }
+  pre {
+    background: var(--code-bg); color: var(--code-text); border-radius: 8px;
+    padding: 16px 20px; overflow-x: auto; font-size: 13px; line-height: 1.6; margin: 12px 0;
+    font-family: "SF Mono", "Fira Code", Menlo, Consolas, monospace;
+  }
+  pre code { background: none; color: inherit; padding: 0; border-radius: 0; }
+  .kw { color: #cba6f7; } .fn { color: #89b4fa; } .str { color: #a6e3a1; }
+  .cm { color: #6c7086; font-style: italic; } .num { color: #fab387; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; margin: 16px 0; }
+  th {
+    text-align: left; padding: 8px 12px; background: var(--bg); border-bottom: 2px solid var(--border);
+    font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted);
+  }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg); }
+  .td-good { color: var(--green); font-weight: 600; }
+  .td-big { font-weight: 700; color: var(--accent); font-size: 15px; }
+  .td-muted { color: var(--text-muted); font-size: 13px; }
+  .callout {
+    border-left: 3px solid var(--accent); background: var(--accent-light);
+    padding: 12px 16px; border-radius: 0 6px 6px 0; margin: 16px 0; font-size: 14px;
+  }
+  .callout-warn { border-left-color: var(--warn); background: var(--warn-light); }
+  .progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: var(--accent); z-index: 100; transition: width .1s; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* Hero */
+  .hero { margin-bottom: 52px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+  .hero h1 { font-size: 30px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; }
+  .hero-sub { font-size: 16px; color: var(--text-muted); margin-bottom: 32px; max-width: 560px; }
+  .hero-stats { display: flex; gap: 20px; flex-wrap: wrap; }
+  .hero-stat {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 18px 24px; min-width: 140px; text-align: center;
+  }
+  .hero-stat .big { font-size: 36px; font-weight: 800; color: var(--accent); line-height: 1; display: block; }
+  .hero-stat .lbl { font-size: 12px; color: var(--text-muted); margin-top: 6px; display: block; }
+
+  /* Problem cards */
+  .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
+  .problem-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 18px; position: relative;
+  }
+  .problem-card .cmd { font-family: "SF Mono", Menlo, monospace; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+  .problem-card .raw { font-size: 22px; font-weight: 700; color: #dc2626; line-height: 1.1; }
+  .problem-card .arrow { font-size: 12px; color: var(--text-muted); margin: 4px 0; }
+  .problem-card .packed { font-size: 18px; font-weight: 700; color: var(--green); }
+  .problem-card .ratio { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+  /* Architecture layers */
+  .layers { display: flex; flex-direction: column; gap: 4px; margin: 20px 0; }
+  .layer {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 20px; display: flex; align-items: flex-start; gap: 16px;
+  }
+  .layer-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .layer-title { font-weight: 600; font-size: 15px; margin-bottom: 2px; }
+  .layer-desc { font-size: 13px; color: var(--text-muted); }
+  .layer-auto { font-size: 11px; font-weight: 600; color: var(--green); background: var(--green-bg); padding: 2px 8px; border-radius: 10px; margin-top: 6px; display: inline-block; }
+
+  /* Tool cards */
+  .tool-group { margin-bottom: 40px; }
+  .tool-group-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--text-muted); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .tool-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .tool-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .tool-card-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+  .tool-name { font-weight: 700; font-size: 15px; font-family: "SF Mono", Menlo, monospace; }
+  .tool-ratio { font-size: 13px; font-weight: 700; color: var(--accent); }
+  .tool-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 8px; }
+  .tool-example { font-size: 12px; color: var(--text-muted); font-family: "SF Mono", Menlo, monospace; background: var(--bg); border-radius: 5px; padding: 6px 8px; }
+  .auto-tag { font-size: 11px; font-weight: 600; color: var(--green); background: var(--green-bg); padding: 2px 7px; border-radius: 10px; display: inline-block; margin-top: 8px; }
+  .manual-tag { font-size: 11px; font-weight: 600; color: var(--warn); background: var(--warn-light); padding: 2px 7px; border-radius: 10px; display: inline-block; margin-top: 8px; }
+
+  /* Hooks table */
+  .hooks-auto { background: var(--green-bg); color: var(--green); font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+  .hooks-semi { background: #fef9c3; color: #713f12; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+  .hooks-manual { background: #fee2e2; color: #991b1b; font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: 10px; white-space: nowrap; }
+
+  /* Stat grid */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+  .stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+  .stat-box .n { font-size: 24px; font-weight: 800; color: var(--accent); line-height: 1.1; }
+  .stat-box .l { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  /* Steps */
+  .steps { counter-reset: step; list-style: none; padding: 0; }
+  .steps li { counter-increment: step; padding: 12px 0 12px 48px; position: relative; border-bottom: 1px solid var(--border); }
+  .steps li:last-child { border-bottom: none; }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 12px;
+    width: 30px; height: 30px; background: var(--accent); color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+  }
+  .steps li strong { display: block; font-size: 15px; margin-bottom: 4px; }
+
+  /* Grafana panels */
+  .panel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 20px 0; }
+  .panel-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .panel-type { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); margin-bottom: 6px; }
+  .panel-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .panel-desc { font-size: 13px; color: var(--text-muted); }
+
+  @media (max-width: 768px) { nav { display: none; } main { margin-left: 0; padding: 24px 20px 60px; } }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<nav id="sidebar">
+  <div class="logo">Token Economy Kit</div>
+  <div class="section-label">Суть</div>
+  <a href="#problem">Проблема</a>
+  <a href="#how">Как работает</a>
+  <div class="section-label">Инструменты</div>
+  <a href="#tools-compress">Сжатие команд</a>
+  <a href="#tools-context">Контекст задачи</a>
+  <a href="#tools-manage">Управление</a>
+  <div class="section-label">Результат</div>
+  <a href="#automation">Что работает само</a>
+  <a href="#numbers">Цифры</a>
+  <a href="#grafana">Метрики в Grafana</a>
+  <a href="#connect">Подключить</a>
+</nav>
+
+<main>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <h1>Token Economy Kit</h1>
+  <p class="hero-sub">Набор инструментов, который сокращает расход токенов Claude — автоматически, без изменений в работе разработчика.</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="big">−53%</span>
+      <span class="lbl">токенов на задачу</span>
+    </div>
+    <div class="hero-stat">
+      <span class="big">−66%</span>
+      <span class="lbl">стоимость сессий</span>
+    </div>
+    <div class="hero-stat">
+      <span class="big">0</span>
+      <span class="lbl">действий от разработчика</span>
+    </div>
+    <div class="hero-stat">
+      <span class="big">1</span>
+      <span class="lbl">команда для установки</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── ПРОБЛЕМА ── -->
+<section id="problem">
+  <h2>В чём проблема</h2>
+
+  <p>Claude работает с контекстным окном — конечным пространством, куда помещаются все данные сессии. Каждый токен в контексте стоит денег. Проблема в том, что без оптимизации туда попадает <strong>огромное количество лишних данных</strong>: полные git-диффы, тысячестрочные деревья директорий, XML-файлы с метаданными тестов.</p>
+
+  <p>Больше лишних данных → больше токенов → выше стоимость → хуже качество ответов, потому что модель «отвлекается» на шум.</p>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="cmd">git diff HEAD~5</div>
+      <div class="raw">1.8 MB</div>
+      <div class="arrow">↓ diff-pack --stat</div>
+      <div class="packed">73 KB</div>
+      <div class="ratio">сжатие 24×</div>
+    </div>
+    <div class="problem-card">
+      <div class="cmd">tree ./src</div>
+      <div class="raw">3.2 MB</div>
+      <div class="arrow">↓ tree-pack</div>
+      <div class="packed">1.7 KB</div>
+      <div class="ratio">сжатие 1 828×</div>
+    </div>
+    <div class="problem-card">
+      <div class="cmd">TEST-*.xml (один файл)</div>
+      <div class="raw">140 KB</div>
+      <div class="arrow">↓ test-summary</div>
+      <div class="packed">113 байт</div>
+      <div class="ratio">сжатие 1 240×</div>
+    </div>
+    <div class="problem-card">
+      <div class="cmd">rg "KafkaListener" .</div>
+      <div class="raw">9.3 KB</div>
+      <div class="arrow">↓ rg-pack</div>
+      <div class="packed">3.8 KB</div>
+      <div class="ratio">структурированный вывод</div>
+    </div>
+  </div>
+
+  <p>Каждый из этих сценариев — это то, что Claude делает регулярно в ходе работы. Без оптимизации разработчик не замечает расход, но деньги утекают.</p>
+</section>
+
+<!-- ── КАК РАБОТАЕТ ── -->
+<section id="how">
+  <h2>Как это работает</h2>
+
+  <p>Три уровня, которые работают вместе. Разработчику не нужно знать об их существовании.</p>
+
+  <div class="layers">
+    <div class="layer">
+      <div class="layer-icon">🔀</div>
+      <div>
+        <div class="layer-title">Прокси — claude-token-buffet</div>
+        <div class="layer-desc">Все запросы от Claude Code проходят через общий прокси вместо прямого обращения к Anthropic API. Прокси знает: кто сделал запрос, какую модель использовал, сколько токенов потратил, сколько это стоит. Всё пишется в PostgreSQL и видно в Grafana.</div>
+        <span class="layer-auto">Прозрачно для разработчика</span>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="layer-icon">⚡</div>
+      <div>
+        <div class="layer-title">Хуки — автоматический перехват</div>
+        <div class="layer-desc">Claude Code поддерживает хуки: скрипты, которые запускаются до выполнения инструментов. Когда Claude собирается запустить <code>tree</code>, <code>git diff</code> или <code>rg</code> — хук перехватывает команду, запускает сжатую версию и блокирует оригинал. Claude видит только компактный результат.</div>
+        <span class="layer-auto">Полностью автоматически</span>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="layer-icon">📋</div>
+      <div>
+        <div class="layer-title">CLAUDE.md — правила поведения</div>
+        <div class="layer-desc">Файл с инструкциями, который Claude читает в начале каждой сессии. Там написано: «перед изучением кодовой базы запусти repo-map», «если вывод больше 50 KB — сохрани в context-store». Claude следует этим правилам без напоминаний.</div>
+        <span class="layer-auto">Claude следует сам</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    Разработчику достаточно <strong>один раз</strong> запустить установочный скрипт. После этого все три уровня работают в фоне.
+  </div>
+</section>
+
+<!-- ── ИНСТРУМЕНТЫ: СЖАТИЕ ── -->
+<section id="tools-compress">
+  <h2>Инструменты: сжатие команд</h2>
+
+  <p>Эти инструменты работают <strong>полностью автоматически через хуки</strong>. Когда Claude запускает дорогую команду — хук подменяет её на сжатый вариант. Claude не знает о подмене, просто получает компактный ответ.</p>
+
+  <div class="tool-cards">
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">diff-pack</span>
+        <span class="tool-ratio">до 24×</span>
+      </div>
+      <div class="tool-desc">Сжимает <code>git diff</code>. Вместо 1.8 MB кода — список файлов со счётчиками изменений и названиями функций. Агент понимает масштаб PR без чтения каждой строки.</div>
+      <div class="tool-example">git diff HEAD~5 → 73 KB вместо 1.8 MB</div>
+      <span class="auto-tag">⚡ автоматически</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">tree-pack</span>
+        <span class="tool-ratio">до 1 828×</span>
+      </div>
+      <div class="tool-desc">Заменяет <code>tree</code>. Возвращает компактную сводку: модули, примеры src/main и src/test, конфиги, build-файлы. Всё это в ~1 700 байт независимо от размера репозитория.</div>
+      <div class="tool-example">tree ./src → 1 730 байт вместо 3.2 MB</div>
+      <span class="auto-tag">⚡ автоматически</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">rg-pack</span>
+        <span class="tool-ratio">2–5×</span>
+      </div>
+      <div class="tool-desc">Оборачивает <code>rg</code> и <code>grep</code>. Вместо потока строк — список файлов с количеством совпадений, 1–3 примера на файл и список «что читать дальше».</div>
+      <div class="tool-example">rg "KafkaListener" . → структурированный список</div>
+      <span class="auto-tag">⚡ автоматически</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">test-summary</span>
+        <span class="tool-ratio">до 1 240×</span>
+      </div>
+      <div class="tool-desc">Читает JUnit XML (Gradle/Maven), Go и pytest отчёты. Возвращает: сколько тестов, сколько упало, для каждого упавшего — название, ошибка, файл и строка.</div>
+      <div class="tool-example">140 KB XML → 113 байт, только суть</div>
+      <span class="auto-tag">⚡ автоматически</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">log-pack</span>
+        <span class="tool-ratio">до 9.6×</span>
+      </div>
+      <div class="tool-desc">Дедуплицирует логи. Убирает повторяющиеся сообщения, нормализует request_id, показывает уникальные ошибки с количеством повторений и ссылкой на файл.</div>
+      <div class="tool-example">9.6 KB build log → 997 байт уникальных ошибок</div>
+      <span class="auto-tag">⚡ автоматически</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── ИНСТРУМЕНТЫ: КОНТЕКСТ ── -->
+<section id="tools-context">
+  <h2>Инструменты: контекст задачи</h2>
+
+  <p>Эти инструменты помогают Claude понять кодовую базу без чтения сотен файлов. Работают через правила в CLAUDE.md — Claude использует их сам, когда это уместно.</p>
+
+  <div class="tool-cards">
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">repo-map</span>
+        <span class="tool-ratio">~40 000×</span>
+      </div>
+      <div class="tool-desc">Сканирует репозиторий статически и возвращает карту символов: классы, интерфейсы, функции, Kafka listeners, контроллеры, репозитории. Вместо чтения 288 файлов — 798 байт с картой всего проекта.</div>
+      <div class="tool-example">288 .go файлов → 798 байт карты</div>
+      <span class="manual-tag">📋 по правилу CLAUDE.md</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">task-pack</span>
+        <span class="tool-ratio">старт задачи</span>
+      </div>
+      <div class="tool-desc">Собирает компактный «брифинг» задачи: описание, критерии готовности, релевантные символы из repo-map, последние изменения из diff, упавшие тесты. Claude получает структурированный контекст вместо свободного описания.</div>
+      <div class="tool-example">issue + map → 1 876 байт брифинга</div>
+      <span class="manual-tag">📋 по правилу CLAUDE.md</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── ИНСТРУМЕНТЫ: УПРАВЛЕНИЕ ── -->
+<section id="tools-manage">
+  <h2>Инструменты: управление контекстом</h2>
+
+  <div class="tool-cards">
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">context-store</span>
+        <span class="tool-ratio">хранилище</span>
+      </div>
+      <div class="tool-desc">Когда Claude получает большой вывод (>50 KB), сохраняет его локально и возвращает ID + краткое резюме. Дальше в сессии Claude оперирует summary и обращается к деталям только если нужно.</div>
+      <div class="tool-example">5.4 KB diff → id: out_20260504_xxx + summary</div>
+      <span class="manual-tag">📋 по правилу CLAUDE.md</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">budget-guard</span>
+        <span class="tool-ratio">советник</span>
+      </div>
+      <div class="tool-desc">Проверяет команды до выполнения и предупреждает о потенциально дорогих операциях. Предлагает дешёвую альтернативу: вместо <code>git diff HEAD~10</code> → <code>diff-pack</code>.</div>
+      <div class="tool-example">git diff HEAD~10 → «риск: используй diff-pack»</div>
+      <span class="auto-tag">⚡ автоматически через хук</span>
+    </div>
+    <div class="tool-card">
+      <div class="tool-card-head">
+        <span class="tool-name">token-metrics</span>
+        <span class="tool-ratio">аналитика</span>
+      </div>
+      <div class="tool-desc">Анализирует JSONL-лог сессий: общий расход токенов, стоимость, cache hit ratio, сравнение периодов. Показывает, насколько эффективна оптимизация на реальных данных.</div>
+      <div class="tool-example">baseline 609K → optimized 286K токенов</div>
+      <span class="manual-tag">аудит по запросу</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── АВТОМАТИЗАЦИЯ ── -->
+<section id="automation">
+  <h2>Что работает само, что нет</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Что делает Claude</th>
+        <th>Как перехватывается</th>
+        <th>Режим</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>tree ./src</code></td>
+        <td>Хук заменяет на tree-pack, блокирует оригинал</td>
+        <td><span class="hooks-auto">⚡ автоматически</span></td>
+      </tr>
+      <tr>
+        <td><code>git diff HEAD~N</code></td>
+        <td>Хук сжимает через diff-pack, Claude видит только статистику</td>
+        <td><span class="hooks-auto">⚡ автоматически</span></td>
+      </tr>
+      <tr>
+        <td><code>rg "pattern" .</code></td>
+        <td>Хук сжимает через rg-pack, возвращает структурированный список</td>
+        <td><span class="hooks-auto">⚡ автоматически</span></td>
+      </tr>
+      <tr>
+        <td><code>cat service.log</code></td>
+        <td>Хук направляет через log-pack, убирает повторения</td>
+        <td><span class="hooks-auto">⚡ автоматически</span></td>
+      </tr>
+      <tr>
+        <td>Читает TEST-*.xml</td>
+        <td>Хук перехватывает, запускает test-summary</td>
+        <td><span class="hooks-auto">⚡ автоматически</span></td>
+      </tr>
+      <tr>
+        <td>Изучает кодовую базу</td>
+        <td>CLAUDE.md: «запусти repo-map перед чтением файлов»</td>
+        <td><span class="hooks-semi">📋 правило Claude</span></td>
+      </tr>
+      <tr>
+        <td>Получает большой вывод</td>
+        <td>CLAUDE.md: «сохрани в context-store, работай с ID»</td>
+        <td><span class="hooks-semi">📋 правило Claude</span></td>
+      </tr>
+      <tr>
+        <td>Начало новой задачи</td>
+        <td>CLAUDE.md: «если задача нетривиальная — запусти task-pack»</td>
+        <td><span class="hooks-semi">📋 правило Claude</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    Хуки дают <strong>100% автоматическое</strong> сжатие самых дорогих операций — тех, что дают 80% экономии. CLAUDE.md закрывает остальное. Разработчик не участвует ни в том, ни в другом.
+  </div>
+
+  <h3>Как работает хук (технически)</h3>
+  <p>Хук — это скрипт, который Claude Code запускает <em>до</em> выполнения инструмента. Если хук завершается с кодом <code>2</code>, оригинальная команда не выполняется. Claude видит только вывод хука — уже сжатые данные.</p>
+
+<pre><span class="cm"># ~/.claude/token-economy/hooks/pre-bash.sh</span>
+CMD=$(cat - | <span class="fn">jq</span> -r <span class="str">'.command'</span>)
+
+<span class="kw">case</span> "$CMD" <span class="kw">in</span>
+  <span class="str">tree\ *</span>)
+    ARGS="${CMD#tree }"
+    ~/.claude/te-kit/scripts/tree-pack $ARGS
+    <span class="kw">exit</span> <span class="num">2</span>   <span class="cm"># ← Claude не видит сырой tree</span>
+    ;;
+  <span class="str">"git diff"*</span>)
+    <span class="fn">eval</span> "$CMD" | ~/.claude/te-kit/scripts/diff-pack --stat
+    <span class="kw">exit</span> <span class="num">2</span>   <span class="cm"># ← Claude не видит 1.8 MB диффа</span>
+    ;;
+<span class="kw">esac</span>
+<span class="kw">exit</span> <span class="num">0</span>  <span class="cm"># остальные команды не трогаем</span></pre>
+</section>
+
+<!-- ── ЧИСЛА ── -->
+<section id="numbers">
+  <h2>Реальные числа</h2>
+
+  <p>Измерено на двух реальных проектах: <strong>target</strong> (Kotlin/Spring Boot, 2 170 файлов, 170K LOC) и <strong>a-p</strong> (Go/gRPC, 288 файлов, 65K LOC).</p>
+
+  <h3>Сжатие по инструментам</h3>
+  <table>
+    <thead><tr><th>Инструмент</th><th>Было</th><th>Стало</th><th>Сжатие</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>test-summary (один XML)</td>
+        <td>140 137 байт</td>
+        <td class="td-big">113 байт</td>
+        <td class="td-good">1 240×</td>
+      </tr>
+      <tr>
+        <td>tree-pack (target, Kotlin)</td>
+        <td>3 160 000 байт</td>
+        <td class="td-big">1 730 байт</td>
+        <td class="td-good">1 828×</td>
+      </tr>
+      <tr>
+        <td>repo-map (a-p, Go)</td>
+        <td>~40 MB (все файлы)</td>
+        <td class="td-big">798 байт</td>
+        <td class="td-good">~40 000×</td>
+      </tr>
+      <tr>
+        <td>diff-pack (PR LP-2459)</td>
+        <td>1 820 337 байт</td>
+        <td class="td-big">73 516 байт</td>
+        <td class="td-good">24.8×</td>
+      </tr>
+      <tr>
+        <td>log-pack (Gradle failing)</td>
+        <td>9 562 байт</td>
+        <td class="td-big">997 байт</td>
+        <td class="td-good">9.6×</td>
+      </tr>
+      <tr>
+        <td>rg-pack (KafkaListener)</td>
+        <td>9 265 байт</td>
+        <td class="td-big">3 778 байт</td>
+        <td class="td-good">2.5×</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>До и после внедрения (5 задач)</h3>
+
+  <div class="stat-grid">
+    <div class="stat-box">
+      <div class="n">609 K → 286 K</div>
+      <div class="l">токенов на 5 задач (−53%)</div>
+    </div>
+    <div class="stat-box">
+      <div class="n">$1.96 → $0.67</div>
+      <div class="l">стоимость тех же задач (−66%)</div>
+    </div>
+    <div class="stat-box">
+      <div class="n">0% → 38%</div>
+      <div class="l">cache hit ratio — токены по льготной цене</div>
+    </div>
+    <div class="stat-box">
+      <div class="n">121K → 57K</div>
+      <div class="l">среднее токенов на задачу</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    Cache hit ratio 38% означает, что треть токенов читается из кэша по сниженной цене. Этот показатель растёт со временем по мере того, как агент начинает переиспользовать компактные промпты.
+  </div>
+</section>
+
+<!-- ── GRAFANA ── -->
+<section id="grafana">
+  <h2>Метрики в Grafana</h2>
+
+  <p>Все запросы проходят через <strong>claude-token-buffet</strong> — прокси, который уже перехватывает и считает токены. Добавление записи в PostgreSQL — это несколько строк в существующем методе <code>applyUsage()</code>. После этого данные доступны в Grafana.</p>
+
+  <div class="panel-grid">
+    <div class="panel-card">
+      <div class="panel-type">Time series</div>
+      <div class="panel-title">Токены по времени</div>
+      <div class="panel-desc">Расход input + output токенов в разрезе дней и часов. Сразу видно когда и насколько вырос расход.</div>
+    </div>
+    <div class="panel-card">
+      <div class="panel-type">Bar gauge</div>
+      <div class="panel-title">Cache hit %</div>
+      <div class="panel-desc">Доля токенов, прочитанных из кэша. Ключевая метрика эффективности — должна расти со временем после подключения оптимизаций.</div>
+    </div>
+    <div class="panel-card">
+      <div class="panel-type">Table</div>
+      <div class="panel-title">Стоимость по пользователям</div>
+      <div class="panel-desc">Кто сколько тратит, какую модель использует, какой cache hit у каждого. Помогает находить неэффективные паттерны.</div>
+    </div>
+  </div>
+
+  <h3>Схема данных (PostgreSQL)</h3>
+<pre><span class="kw">CREATE TABLE</span> token_requests (
+    ts                    <span class="fn">TIMESTAMPTZ</span> <span class="kw">DEFAULT NOW</span>(),
+    user_name             <span class="fn">TEXT</span>,
+    model                 <span class="fn">TEXT</span>,
+    input_tokens          <span class="fn">BIGINT</span>,
+    output_tokens         <span class="fn">BIGINT</span>,
+    cache_read_tokens     <span class="fn">BIGINT</span>,
+    cache_creation_tokens <span class="fn">BIGINT</span>,
+    cost_usd              <span class="fn">NUMERIC(12, 6)</span>
+);</pre>
+
+  <p>Prometheus-метрики уже доступны на порту <code>:2112</code> прямо сейчас — базовые графики можно подключить без PostgreSQL. БД нужна для истории дольше 15 дней и SQL-аналитики.</p>
+</section>
+
+<!-- ── ПОДКЛЮЧИТЬ ── -->
+<section id="connect">
+  <h2>Как подключить</h2>
+
+  <p>Два шага. Второй шаг — одна команда.</p>
+
+  <ol class="steps">
+    <li>
+      <strong>Получить доступ к прокси</strong>
+      Попросить токен у команды и добавить одну переменную окружения. Все запросы Claude Code пойдут через общий прокси — появится трекинг и управление расходами.
+      <pre style="margin-top:10px"><span class="cm"># ~/.zshrc или ~/.bashrc</span>
+<span class="kw">export</span> ANTHROPIC_BASE_URL=http://claude-token-buffet.internal:3001
+<span class="kw">export</span> ANTHROPIC_API_KEY=your-team-token</pre>
+    </li>
+    <li>
+      <strong>Запустить установочный скрипт</strong>
+      Скрипт кладёт scripts/ в <code>~/.claude/token-economy/</code>, добавляет хуки в <code>~/.claude/settings.json</code> и правила в <code>~/.claude/CLAUDE.md</code>. После этого экономия работает сама.
+      <pre style="margin-top:10px">curl -sSL https://internal/install-token-economy.sh | bash</pre>
+    </li>
+  </ol>
+
+  <div class="callout" style="margin-top:24px">
+    После установки: следующий <code>git diff</code> в Claude Code будет автоматически сжат. Следующий <code>tree</code> — заменён. Разработчик этого не заметит, но токенов потратит втрое меньше.
+  </div>
+
+  <h3>Что получает команда</h3>
+  <table>
+    <thead><tr><th>Было</th><th>Стало</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>Каждый разработчик платит сам, расход непрозрачен</td>
+        <td class="td-good">Централизованный учёт через прокси, данные в Grafana</td>
+      </tr>
+      <tr>
+        <td>git diff → 1.8 MB в контексте</td>
+        <td class="td-good">git diff → 73 KB автоматически</td>
+      </tr>
+      <tr>
+        <td>tree → тысячи строк</td>
+        <td class="td-good">tree → 1 700 байт автоматически</td>
+      </tr>
+      <tr>
+        <td>JUnit XML → 140 KB на файл</td>
+        <td class="td-good">JUnit XML → 113 байт автоматически</td>
+      </tr>
+      <tr>
+        <td>Неизвестно сколько стоит агентная сессия</td>
+        <td class="td-good">Стоимость по пользователям и задачам в реальном времени</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const el = document.getElementById('progress');
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    el.style.width = (window.scrollY / h * 100) + '%';
+  });
+
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('nav a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`nav a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+</body>
+</html>

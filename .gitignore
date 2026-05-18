@@ -1,0 +1,17 @@
+portfolio/
+profile/
+.claude/skills/ui-ux-pro-max/
+
+.DS_Store
+**/.DS_Store
+
+node_modules/
+**/node_modules/
+.next/
+**/.next/
+out/
+**/out/
+
+.env
+.env.*
+!.env.example

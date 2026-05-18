@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)https://80.74.25.43:8443/reports/weekly/20260513_070000/report.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Opportunity Report — MCP Gateway + Policy Engine</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --card: #161a20;
+    --text: #e6e8ec;
+    --muted: #9aa3af;
+    --accent: #6ee7b7;
+    --accent2: #60a5fa;
+    --border: #23282e;
+    --danger: #f87171;
+    --warn: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 28px 20px 48px;
+  }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 18px;
+    margin-bottom: 22px;
+  }
+  h1 { margin: 0 0 6px; font-size: 1.6rem; }
+  .tagline { color: var(--muted); font-size: 0.95rem; }
+  .meta { color: var(--muted); font-size: 0.82rem; margin-top: 8px; }
+  .badge {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 999px;
+    background: rgba(110,231,183,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(110,231,183,0.25);
+  }
+  .badge-warn {
+    background: rgba(251,191,36,0.12);
+    color: var(--warn);
+    border-color: rgba(251,191,36,0.25);
+  }
+  .badge-danger {
+    background: rgba(248,113,113,0.12);
+    color: var(--danger);
+    border-color: rgba(248,113,113,0.25);
+  }
+  section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 18px 16px;
+    margin-bottom: 16px;
+  }
+  h2 { font-size: 1.15rem; margin: 0 0 10px; color: var(--accent2); }
+  h3 { font-size: 0.98rem; margin: 14px 0 6px; color: var(--text); }
+  p { margin: 0 0 10px; }
+  ul, ol { margin: 6px 0 10px 18px; padding: 0; }
+  li { margin: 4px 0; }
+  a { color: var(--accent2); }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  @media (max-width: 720px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+  .metric {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 6px 0;
+  }
+  .metric .val { font-weight: 700; font-size: 1.05rem; }
+  .metric .lbl { color: var(--muted); font-size: 0.85rem; }
+  .quote {
+    border-left: 3px solid var(--accent2);
+    padding-left: 12px;
+    color: var(--muted);
+    margin: 8px 0;
+  }
+  .linkrow {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;
+  }
+  .linkpill {
+    background: rgba(96,165,250,0.08);
+    border: 1px solid rgba(96,165,250,0.25);
+    color: var(--accent2);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    text-decoration: none;
+  }
+  .linkpill:hover { background: rgba(96,165,250,0.15); }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin-top: 8px;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  th { color: var(--muted); font-weight: 600; }
+  .confidence-high { color: var(--accent); }
+  .confidence-medium { color: var(--warn); }
+  .confidence-low { color: var(--danger); }
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.82rem;
+    margin-top: 24px;
+  }
+</style>
+<script>(function(){try{var hash=window.location.hash||"";var m=hash.match(/(?:^|[#!&])token=([^&]+)/);if(!m)return;var token=decodeURIComponent(m[1]);var keys=Object.keys(localStorage);var key="openclaw.control.settings.v1";for(var i=0;i<keys.length;i++){if(keys[i].indexOf("openclaw.control.settings.v1")===0){key=keys[i];break;}}var raw=localStorage.getItem(key);var current={};if(raw)current=JSON.parse(raw)||{};current.token=token;current.gatewayUrl="wss://80.74.25.43:8443/";localStorage.setItem(key,JSON.stringify(current));}catch(e){}})();</script></head>
+<body style="overscroll-behavior-x: auto;">
+<div class="container">
+
+<header>
+  <div class="badge">Weekly Opportunity Report</div>
+  <h1>MCP Gateway + Policy Engine for Enterprise Agent Security</h1>
+  <div class="tagline">Runtime governance and supply-chain security for MCP and agent toolchains</div>
+  <div class="meta">Report date: 2026-05-13 · Sources: 18 signals · Confidence: high</div>
+</header>
+
+<!-- 1 -->
+<section id="executive-summary">
+  <h2>Executive Summary</h2>
+  <p>
+    The Model Context Protocol (MCP) is becoming the de facto integration surface for AI agents, but enterprises have no standardized way to audit, sandbox, or enforce policies on MCP servers. This creates a security and compliance gap that is widening daily as adoption accelerates. We propose an <strong>MCP Gateway + Policy Engine</strong> that sits between enterprise agents and MCP servers, enforcing runtime guardrails, observability, and compliance with minimal engineering overhead.
+  </p>
+  <div class="grid-2">
+    <div class="metric"><span class="val">$15B</span><span class="lbl">Sierra valuation (agent infra validated)</span></div>
+    <div class="metric"><span class="val">7,700+</span><span class="lbl">MCP servers scored by Manifold</span></div>
+    <div class="metric"><span class="val">~$180K</span><span class="lbl">Pre-seed/seed cost (12 mo, 2–3 people)</span></div>
+    <div class="metric"><span class="val">$30M–$75M</span><span class="lbl">Base ARR Year 5 (upside $75M)</span></div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section id="idea-card">
+  <h2>Startup Idea Card</h2>
+  <div class="grid-2">
+    <div>
+      <div class="metric"><span class="val">Name</span><span class="lbl">MCP Gateway + Policy Engine for Enterprise Agent Security</span></div>
+      <div class="metric"><span class="val">Tagline</span><span class="lbl">Runtime governance and supply-chain security for MCP and agent toolchains</span></div>
+      <div class="metric"><span class="val">Stage</span><span class="lbl">Pre-seed / seed — MVP to first pilots</span></div>
+    </div>
+    <div>
+      <div class="metric"><span class="val">Team</span><span class="lbl">2–3 technical founders (Go/Kotlin/Java backend)</span></div>
+      <div class="metric"><span class="val">Burn</span><span class="lbl">~$15K/month</span></div>
+      <div class="metric"><span class="val">Target</span><span class="lbl">Enterprise CISOs, platform engineering, DevOps</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section id="for-what-why">
+  <h2>For what / why</h2>
+  <p>
+    AI agents are moving from experiments to production. They connect to CRMs, databases, CI/CD, and third-party APIs through MCP servers. Each connection is a potential attack surface: a compromised MCP server can exfiltrate data, escalate privileges, or execute unauthorized actions. Current security stacks (Snyk, Sonatype, WAFs) are not agent-aware and do not understand MCP semantics.
+  </p>
+  <p>
+    This product exists because enterprises need <strong>agent-native security</strong>: policy enforcement that understands agent intent, tool chaining, and MCP message flows — not just network-level firewalls.
+  </p>
+</section>
+
+<!-- 4 -->
+<section id="for-whom">
+  <h2>For whom</h2>
+  <ul>
+    <li><strong>Primary:</strong> Series A+ SaaS companies and mid-market enterprises (20–300 engineers) with platform engineering + security ownership actively using AI-assisted engineering workflows.</li>
+    <li><strong>Buyer personas:</strong> Head of Platform Engineering, Security Engineering Manager, VP Engineering.</li>
+    <li><strong>Where they hang out:</strong> Hacker News, Reddit (r/devops, r/platformeng, r/LLMDevs), KubeCon / DevOpsDays, Telegram channels (devops_ru, golang_ru), Mastodon/Tech Twitter (X).</li>
+  </ul>
+</section>
+
+<!-- 5 -->
+<section id="customer-pain">
+  <h2>Customer pain</h2>
+  <ul>
+    <li>MCP servers are adopted faster than they can be audited; no standard security review or policy enforcement exists today.</li>
+    <li>Platform teams are being asked to “secure the AI stuff” without context or tooling.</li>
+    <li>Existing SCA and SAST tools (Snyk, Sonatype) do not understand MCP server provenance, behavioral risk, or agent-specific attack patterns.</li>
+    <li>Compliance auditors are beginning to ask for agent access logs and audit trails; most teams cannot produce them.</li>
+    <li>Incidents like the Vercel third-party AI tool compromise show that agent tooling supply-chain risk is real and immediate.</li>
+  </ul>
+</section>
+
+<!-- 6 -->
+<section id="why-it-matters">
+  <h2>Why this pain matters</h2>
+  <p>
+    Agent actions are autonomous and high-velocity. A single compromised MCP server in a CI/CD pipeline can expose hundreds of repositories (see Vercel incident). Unlike human users, agents do not pause to review OAuth scopes or read security warnings. The blast radius of an agent compromise is larger and faster.
+  </p>
+  <p>
+    Regulatory pressure is also building: DORA, SOC 2, and HIPAA auditors are starting to ask about AI agent governance. Enterprises that cannot demonstrate agent traceability and policy enforcement will fail audits or slow down AI adoption — both are expensive outcomes.
+  </p>
+</section>
+
+<!-- 7 -->
+<section id="market-signals">
+  <h2>Market signals</h2>
+  <table>
+    <tbody><tr><th>Signal</th><th>Source</th><th>Confidence</th></tr>
+    <tr><td>Sierra $950M at $15B valuation, $150M ARR — enterprise agent infrastructure demand is real</td><td>SiliconANGLE</td><td class="confidence-high">High</td></tr>
+    <tr><td>Salesforce Headless 360 — entire platform rebuilt as agent-facing APIs/MCP tools</td><td>VentureBeat</td><td class="confidence-high">High</td></tr>
+    <tr><td>Manifold scores 7,700+ MCP servers; supply-chain risk is measurable and large</td><td>SiliconANGLE</td><td class="confidence-high">High</td></tr>
+    <tr><td>Security Boulevard: MCP is a critical, unguarded gap with no standardized review</td><td>Security Boulevard</td><td class="confidence-high">High</td></tr>
+    <tr><td>Visa + InFlow launch agent-native payments — B2B agent infrastructure layer emerging</td><td>Forbes</td><td class="confidence-high">High</td></tr>
+    <tr><td>Trent AI raises $13M seed for agent security from Databricks/Stripe execs</td><td>SiliconANGLE</td><td class="confidence-medium">Medium</td></tr>
+    <tr><td>Greenhouse, Jama Software launch MCP servers — vertical adoption crossing into HR/eng mgmt</td><td>TMCNet / Business Insider</td><td class="confidence-medium">Medium</td></tr>
+    <tr><td>Microsoft teaches C# devs to build MCP servers — protocol crossing into .NET/Java enterprise</td><td>Visual Studio Magazine</td><td class="confidence-medium">Medium</td></tr>
+  </tbody></table>
+</section>
+
+<!-- 8 -->
+<section id="competitors">
+  <h2>Competitors</h2>
+  <table>
+    <tbody><tr><th>Competitor</th><th>What they do</th><th>Our differentiation</th></tr>
+    <tr><td>Manifold (Manifest)</td><td>Scores MCP servers for provenance/behavioral risk</td><td>We add runtime policy enforcement and gateway control, not just scoring</td></tr>
+    <tr><td>Runlayer</td><td>MCP security tooling</td><td>Broader policy engine + observability + compliance integration</td></tr>
+    <tr><td>Trent AI</td><td>Agent security (detection/response)</td><td>We focus on MCP gateway/governance vs general agent runtime D&amp;R</td></tr>
+    <tr><td>Snyk / Sonatype</td><td>General SCA/SAST</td><td>Agent-aware, MCP-native semantics; not just dependency scanning</td></tr>
+  </tbody></table>
+</section>
+
+<!-- 9 -->
+<section id="risks">
+  <h2>Risks</h2>
+  <ul>
+    <li><strong>Market timing:</strong> MCP may evolve or be superseded by another protocol. Mitigation: build protocol-agnostic gateway abstractions.</li>
+    <li><strong>Incumbent response:</strong> CrowdStrike, SentinelOne, or Cloudflare could add agent-aware features quickly. Mitigation: move fast, win design partners, build deep MCP-specific expertise.</li>
+    <li><strong>Customer education:</strong> Many enterprises do not yet know they need agent governance. Mitigation: content + open-source to create category awareness.</li>
+    <li><strong>Technical complexity:</strong> Policy enforcement on agent toolchains requires deep protocol understanding. Mitigation: hire founders with Go/Kotlin backend + security background.</li>
+    <li><strong>Funding competition:</strong> YC and AI Grant are competitive. Mitigation: apply broadly (portfolio approach) and bootstrap revenue via open-source pilots.</li>
+  </ul>
+</section>
+
+<!-- 10 -->
+<section id="costs">
+  <h2>Costs</h2>
+  <p>Estimated pre-seed/seed runway for a 2–3 person team over 12 months:</p>
+  <div class="grid-2">
+    <div class="metric"><span class="val">~$108K</span><span class="lbl">Engineering salaries (60%)</span></div>
+    <div class="metric"><span class="val">~$36K</span><span class="lbl">Cloud infrastructure (20%)</span></div>
+    <div class="metric"><span class="val">~$18K</span><span class="lbl">Legal / compliance (10%)</span></div>
+    <div class="metric"><span class="val">~$18K</span><span class="lbl">Sales / marketing (10%)</span></div>
+  </div>
+  <p class="quote">Total ~$180K. Recommended mix: 40–50% non-dilutive grants/credits + 50–60% accelerator/seed VC.</p>
+</section>
+
+<!-- 11 -->
+<section id="potential-revenue">
+  <h2>Potential revenue</h2>
+  <div class="grid-2">
+    <div class="metric"><span class="val">Base ARR</span><span class="lbl">~$30M Year 5</span></div>
+    <div class="metric"><span class="val">Upside</span><span class="lbl">~$75M Year 5</span></div>
+    <div class="metric"><span class="val">Downside</span><span class="lbl">~$12.3M Year 5</span></div>
+    <div class="metric"><span class="val">Base EBITDA</span><span class="lbl">–$8.2M Year 5</span></div>
+  </div>
+  <p>Revenue model: freemium open-source gateway + managed control plane with per-agent or per-MCP-server pricing. Enterprise deals likely $20K–$100K ACV.</p>
+</section>
+
+<!-- 12 -->
+<section id="why-we-believe">
+  <h2>Why we believe this</h2>
+  <ul>
+    <li><strong>Validation by capital:</strong> Sierra ($15B), Trent AI ($13M seed), and Manifold’s traction show that agent infrastructure and security are investable categories.</li>
+    <li><strong>Validation by incumbents:</strong> Salesforce rebuilt its entire platform for agents; AWS launched autonomous DevOps/security agents; Microsoft published an open-source Agent Governance Toolkit.</li>
+    <li><strong>Validation by analysts:</strong> Security Boulevard explicitly calls MCP a critical, unguarded gap — a rare consensus between security practitioners and industry press.</li>
+    <li><strong>Founder fit:</strong> Go/Kotlin/Java backend + security background maps directly to building a high-performance, policy-aware gateway.</li>
+  </ul>
+</section>
+
+<!-- 13 -->
+<section id="financial-link">
+  <h2>Financial / business model link</h2>
+  <p>Full 5-year financial model (Excel):</p>
+  <div class="linkrow">
+    <a class="linkpill" href="https://80.74.25.43:8443/reports/weekly/20260513_070000/financial_model.xlsx" target="_blank" rel="noopener">Download financial_model.xlsx</a>
+  </div>
+  <p style="margin-top:10px; color:var(--muted); font-size:0.88rem;">The model includes base, upside, and downside scenarios with revenue projections, cost structures, cash flow analysis, and burn/runway calculations. Base ARR ~$30M Year 5; upside ~$75M; downside ~$12.3M.</p>
+</section>
+
+<!-- 14 -->
+<section id="funding">
+  <h2>Grants, accelerators &amp; funding</h2>
+  <table>
+    <tbody><tr><th>Program</th><th>Type</th><th>Amount</th><th>Deadline</th><th>Fit</th></tr>
+    <tr><td>Y Combinator S2026</td><td>Accelerator</td><td>$500K</td><td>Rolling (apply now)</td><td class="confidence-high">High</td></tr>
+    <tr><td>AI Grant (Batch 5)</td><td>Accelerator</td><td>$250K + $600K credits</td><td>Expected mid-2026</td><td class="confidence-high">High</td></tr>
+    <tr><td>EIC Accelerator</td><td>Grant + equity</td><td>Up to €2.5M grant + €15M equity</td><td>July 8, 2026</td><td class="confidence-medium">Medium</td></tr>
+    <tr><td>NSF SBIR — Cybersecurity</td><td>Grant</td><td>Up to $275K Phase I</td><td>Rolling</td><td class="confidence-medium">Medium (US only)</td></tr>
+    <tr><td>NVIDIA Inception</td><td>Credits</td><td>$100K DGX Cloud credits</td><td>Rolling</td><td class="confidence-high">High</td></tr>
+    <tr><td>AWS Activate</td><td>Credits</td><td>Up to $100K–$250K</td><td>Rolling</td><td class="confidence-high">High</td></tr>
+    <tr><td>F/ai at Station F</td><td>Accelerator</td><td>$1M+ compute credits, 0% equity</td><td>Expected mid-2026</td><td class="confidence-medium">Medium</td></tr>
+    <tr><td>EIC Pathfinder</td><td>Grant</td><td>Up to €3–4M</td><td>Oct 28, 2026</td><td class="confidence-low">Low (research-heavy)</td></tr>
+  </tbody></table>
+  <p style="margin-top:8px; color:var(--muted); font-size:0.88rem;">Recommended portfolio approach: apply to YC and AI Grant immediately; register for NVIDIA Inception and AWS Activate in parallel; evaluate EIC Accelerator if an EU entity can be formed.</p>
+</section>
+
+<!-- 15 -->
+<section id="growth-trajectory">
+  <h2>Growth trajectory</h2>
+  <h3>Channels (prioritized)</h3>
+  <ol>
+    <li><strong>Technical Content (Blog/Deep-dives)</strong> — HN, lobste.rs, Reddit r/devops. A single deep-dive can drive 1,000+ qualified visits.</li>
+    <li><strong>Open Source + GitHub</strong> — Platform engineers evaluate tools via code. Open-source MCP policy proxy builds trust and upsell.</li>
+    <li><strong>Community Presence</strong> — Reddit/Slack/Telegram. Be the person who answers agent security questions.</li>
+    <li><strong>Conference Talks / Meetups</strong> — DevOpsDays, KubeCon, BSides. Live demos create trust.</li>
+    <li><strong>LinkedIn Organic + Newsletter</strong> — Incident analysis posts get shared inside companies.</li>
+    <li><strong>Cold Outreach to Platform Leaders</strong> — Founder-led outbound with technical, relevant openers.</li>
+    <li><strong>X/Twitter Threads</strong> — Hot takes on agent security spread fast among developers.</li>
+    <li><strong>Paid Ads (LinkedIn / X)</strong> — Only after landing page converts &gt;5% and email list &gt;500.</li>
+  </ol>
+
+  <h3>Shorts / Reels ideas (10 hooks)</h3>
+  <ul>
+    <li>“Your AI agent just got your API keys. What happens next?”</li>
+    <li>“This MCP server has 7,700 clones. 6 of them are malware.”</li>
+    <li>“Cursor deleted a database in 10 seconds. Here’s the fix.”</li>
+    <li>“Your SRE team sleeps. Your agents don’t. Who’s watching them?”</li>
+    <li>“3 lines of YAML = agent can’t touch prod. Here’s how.”</li>
+    <li>“Salesforce went headless. Your agents just got superpowers.”</li>
+    <li>“Why your AI tool review is useless (and what to do instead)”</li>
+    <li>“One compromised token = 200 repos exposed. True story.”</li>
+    <li>“Agent governance in 60 seconds: policy, trace, kill-switch.”</li>
+    <li>“Your compliance auditor is coming. Can you prove what your agents did?”</li>
+  </ul>
+
+  <h3>X/Twitter ideas (10 posts)</h3>
+  <ul>
+    <li>Thread: Vercel third-party AI tool compromise — what happened and how to prevent it.</li>
+    <li>Hot take: “Every company with 50+ engineers using Cursor will have an agent security incident in the next 12 months.”</li>
+    <li>Educational: “MCP servers are the new npm packages. And just like npm, nobody audits them before installing.”</li>
+    <li>Thread: Microsoft Agent Governance Toolkit — 5 runtime security patterns every platform team should steal.</li>
+    <li>Hot take: “Salesforce went headless for agents. That’s great for agents. Terrifying for security teams.”</li>
+    <li>Educational: “What is an Agent Runtime Governance Mesh? A 6-tweet explainer.”</li>
+    <li>Thread: “I interviewed 10 Heads of Platform Engineering… 8 said the same thing: ‘We don’t know what our agents can access.’”</li>
+    <li>Hot take: “Your SOC2 auditor is going to ask about agent access logs next quarter.”</li>
+    <li>Educational: “OpenTelemetry + agents = finally seeing what your AI is doing in production.”</li>
+    <li>Thread: “From zero to agent policy-as-code in 30 minutes using our open-source MCP proxy.”</li>
+  </ul>
+
+  <h3>Telegram / Habr / Dev.to ideas (5 posts)</h3>
+  <ul>
+    <li>Habr deep dive: “Как мы построили runtime governance для AI-агентов: MCP-прокси с least-privilege и OTEL-трейсами”</li>
+    <li>Telegram checklist: “Что делать, если ваш AI-агент получил доступ к CI/CD”</li>
+    <li>Habr analysis: “MCP-серверы — новый supply-chain риск: как Manifold оценивает 7,700 серверов”</li>
+    <li>Telegram curated list: “Agent Runtime Governance: 3 open-source инструмента, которые стоит посмотреть в 2026”</li>
+    <li>Habr tutorial: “OpenTelemetry для AI-агентов: трассировка действий, а не только токенов”</li>
+  </ul>
+
+  <h3>Lead magnet</h3>
+  <p><strong>MCP Security Playbook</strong> — 15-page guide: audit MCP servers, least-privilege policy patterns, OTEL tracing setup, incident response runbook, DORA/SOC2 compliance checklist. Gated behind email on landing page; promoted via HN, Reddit, Telegram, X.</p>
+
+  <h3>Cold outreach</h3>
+  <p>Founder-led outbound to Heads of Platform Engineering. Technical opener referencing their stack + AI tool adoption. Example: “Saw you’re rolling out Cursor to 200 engineers — here’s how Vercel’s third-party tool got compromised.” Follow-up: Day 3 blog post, Day 7 demo offer, Day 14 intro request.</p>
+
+  <h3>First paid ads experiment</h3>
+  <p>LinkedIn Sponsored Content, $1,500 over 2 weeks. Target: Head of Platform Engineering, Security Engineering Manager, VP Engineering; 51–500 employees; US/UK/Germany. Creative: “Your AI agents have API keys. Do you know what they can access?” CTA to download MCP Security Playbook. Kill criteria: CPL &gt;$50 or capture rate &lt;3% after 1 week.</p>
+
+  <h3>Success metrics</h3>
+  <div class="grid-2">
+    <div class="metric"><span class="val">Month 1</span><span class="lbl">50 GitHub stars, 100 sign-ups, 5 interviews</span></div>
+    <div class="metric"><span class="val">Month 2</span><span class="lbl">200 stars, 300 sign-ups, 3 design partners, 2 pilots</span></div>
+    <div class="metric"><span class="val">Month 3</span><span class="lbl">500 stars, 800 emails, 1 pilot conversion, first $5K MRR</span></div>
+    <div class="metric"><span class="val">North Star</span><span class="lbl">Design partners running open-source proxy in staging/prod</span></div>
+  </div>
+</section>
+
+<!-- 16 -->
+<section id="7-day-action-plan">
+  <h2>7-day action plan</h2>
+  <ol>
+    <li><strong>Day 1:</strong> Publish open-source MCP proxy repo on GitHub with README, quickstart, and 3 policy examples.</li>
+    <li><strong>Day 2:</strong> Build landing page with email capture for MCP Security Playbook. Set up email automation (ConvertKit/Postmark).</li>
+    <li><strong>Day 3:</strong> Write first deep-dive blog post: “How to secure MCP servers: a practical guide.” Post to HN, lobste.rs, Reddit r/devops.</li>
+    <li><strong>Day 4:</strong> Answer agent security questions on Reddit r/devops, r/platformeng, and HN. Share landing page in Platform Engineering Slack and Telegram devops_ru.</li>
+    <li><strong>Day 5:</strong> Send 15 personalized cold emails to Heads of Platform Engineering at target accounts. Publish X thread on Vercel incident.</li>
+    <li><strong>Day 6:</strong> Publish Habr article: MCP security deep dive in Russian. Publish Telegram post: “3 open-source tools for agent governance in 2026.”</li>
+    <li><strong>Day 7:</strong> Review week metrics (stars, sign-ups, replies). Adjust messaging for Week 2. Schedule demos with anyone who replied.</li>
+  </ol>
+</section>
+
+<!-- 17 -->
+<section id="sources-confidence">
+  <h2>Sources and confidence levels</h2>
+  <p>All signals were drawn from primary sources (official announcements, VC blogs, product launches, security analysis) from late April to mid-May 2026. Where direct customer pain data was unavailable, pain was inferred from incident disclosures (Vercel), security gap reporting (Security Boulevard), and competitive product launches (Manifold, Runlayer, Trent AI).</p>
+  <table>
+    <tbody><tr><th>Source</th><th>Date</th><th>Confidence</th></tr>
+    <tr><td>SiliconANGLE — Sierra $950M</td><td>2026-05-04</td><td class="confidence-high">High</td></tr>
+    <tr><td>VentureBeat — Salesforce Headless 360</td><td>2026-05-07</td><td class="confidence-high">High</td></tr>
+    <tr><td>Forbes — Visa/InFlow agentic payments</td><td>2026-05-08</td><td class="confidence-high">High</td></tr>
+    <tr><td>SiliconANGLE — Manifold 7,700+ MCP servers</td><td>2026-05-12</td><td class="confidence-high">High</td></tr>
+    <tr><td>Security Boulevard — MCP security gap</td><td>2026-05-12</td><td class="confidence-high">High</td></tr>
+    <tr><td>InfoQ — Revenium agent cost observability</td><td>2026-03-25</td><td class="confidence-medium">Medium</td></tr>
+    <tr><td>SiliconANGLE — Trent AI $13M seed</td><td>2026-04-07</td><td class="confidence-medium">Medium</td></tr>
+    <tr><td>Forbes — AWS AI agents for DevOps/Security</td><td>2026-04-01</td><td class="confidence-medium">Medium</td></tr>
+    <tr><td>Visual Studio Magazine — MCP with C#</td><td>2026-05-07</td><td class="confidence-medium">Medium</td></tr>
+    <tr><td>Business Insider — Jama Software MCP server</td><td>2026-04-22</td><td class="confidence-medium">Medium</td></tr>
+    <tr><td>AlleyWatch / YC 835 AI startups</td><td>2026-04-20</td><td class="confidence-low">Low</td></tr>
+  </tbody></table>
+</section>
+
+<!-- 18 -->
+<section id="open-questions">
+  <h2>Open questions</h2>
+  <ul>
+    <li>Will MCP remain the dominant protocol, or will another standard (A2A, custom vendor protocols) take share?</li>
+    <li>How quickly will CrowdStrike, SentinelOne, or Cloudflare add agent-aware features — and will they outpace a startup?</li>
+    <li>What is the real willingness-to-pay for a standalone MCP gateway vs a feature bundled into existing security/SRE platforms?</li>
+    <li>Can we achieve product-market fit with a lean 2–3 person team before incumbents react?</li>
+    <li>Is the ideal GTM open-source first (bottom-up) or sales-led (top-down)? Validation needed via pilot conversions.</li>
+    <li>What compliance frameworks (SOC 2, DORA, HIPAA, FedRAMP) should be prioritized for early enterprise traction?</li>
+  </ul>
+</section>
+
+<div class="footer">
+  Report generated 2026-05-13 · <a href="https://80.74.25.43:8443/reports/weekly/20260513_070000/report.html" target="_blank" rel="noopener">Permalink</a> · <a href="https://80.74.25.43:8443/reports/weekly/20260513_070000/financial_model.xlsx" target="_blank" rel="noopener">Financial model</a>
+</div>
+
+</div>
+
+
+</body></html>

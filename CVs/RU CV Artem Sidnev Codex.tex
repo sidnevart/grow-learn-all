@@ -1,0 +1,100 @@
+% Created/refined by Codex on 2026-05-14.
+% Source files: EN/RU CVs, additional_experience.md, linkedin_profile_guide.md.
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\setmainfont{Arial}
+\usepackage[a4paper,margin=1.05cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=black]{hyperref}
+
+\urlstyle{same}
+\setlist[itemize]{leftmargin=1.02em,itemsep=0.05em,topsep=0.05em,parsep=0em,partopsep=0em}
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{0.24em}{0.10em}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\emergencystretch=2em
+
+\begin{document}
+\small
+
+\begin{center}
+{\LARGE \textbf{Artem Sidnev}}\\[0.20em]
+{\normalsize Backend Software Engineer \textbar{} data-intensive systems, internal platforms, AI automation}\\[0.35em]
+{\footnotesize
+\href{mailto:a.sidnevart@gmail.com}{a.sidnevart@gmail.com}
+\enspace\textbar\enspace
+\href{https://t.me/sidnevart}{Telegram}
+\enspace\textbar\enspace
+\href{https://www.linkedin.com/in/artem-sidnev}{LinkedIn}
+\enspace\textbar\enspace
+\href{https://github.com/sidnevart}{GitHub}
+\enspace\textbar\enspace
+\href{https://habr.com/ru/users/sidnevart/}{Habr}
+\enspace\textbar\enspace
+\href{https://x.com/ArtemkaWeb3}{X/Twitter}
+}
+\end{center}
+
+\vspace{0.04em}
+
+\section*{Кратко}
+Backend software engineer с почти 3 годами опыта в бэкенде, системах с интенсивной работой с данными, внутренних платформах, автоматизации процессов и AI-инструментах для инженерных команд. Сильные стороны: Java/Kotlin backend, аналитические сценарии на ClickHouse, CI/CD, интеграции, Telegram Mini Apps, RAG и AI-агенты. Сейчас работаю в T-Bank над платформой таргетирования кэшбэков; параллельно развивал продукты в аналитике коммерческой недвижимости, бронированиях, лояльности и локальных инструментах для AI-агентов.
+
+\section*{Ключевые навыки}
+\textbf{Языки:} Java, Kotlin, Go, Python, TypeScript, SQL \\
+\textbf{Backend/Data:} Spring Boot, FastAPI, PostgreSQL, ClickHouse, Redis, Kafka, SQLAlchemy, REST APIs, data-intensive systems \\
+\textbf{Платформы/автоматизация:} GitLab CI, Docker, Docker Compose, nginx, n8n, внутренние платформы, workflow automation, техническая документация \\
+\textbf{AI/Agents:} RAG, AI-агенты, AI code review, автоматизация рефакторинга, developer productivity tooling \\
+\textbf{Домены:} partner integrations, CRM, аналитические платформы, Telegram Bots, Telegram Mini Apps, YClients integrations
+
+\section*{Опыт}
+
+\textbf{Software Engineer (Backend) \textbar{} T-Bank} \hfill \textit{янв 2025 -- н.в.}
+\begin{itemize}
+  \item Разрабатываю бэкенд для платформы таргетирования кэшбэков, которая обрабатывает аудитории партнёров и помогает отправлять релевантные партнёрские офферы клиентам.
+  \item Реализовал таргетирование по тратам и доходам клиентов на потоке около 30 млн транзакций в день и 1.5 лет исторических данных; годовой бизнес-эффект направления составляет порядка \$600 тыс.+.
+  \item Участвовал в переносе процессов сборки аудиторий во внутреннюю аналитическую среду ClickHouse as a Service, ускорив критичный сценарий примерно в 5 раз и вынеся нестандартные процессы из legacy-контура.
+  \item Автоматизировал подстановку регионов партнёров при настройке аудиторий, убрав 10--15 минут с одного запуска и до 40--60 часов ручной работы в месяц.
+  \item Добавил раннюю валидацию в критичных сценариях таргетинга, сократил диагностику типовых проблем на 20--40 минут и ускорил основной CI-пайплайн на 5--7 минут.
+  \item Помог убрать legacy-код, стабилизировать тестовые сценарии, устранить flaky tests и покрыть backend-процессы документацией для поддержки и онбординга.
+  \item Решил серьёзный инцидент в сервисе документооборота, снизив репутационный риск для банка и предотвратив потенциальные финансовые потери.
+  \item Внедрял AI во внутренние инженерные процессы: AI-проверку кода в GitLab, AI-задачу в CI для рефакторинга и черновиков merge request, n8n-автоматизацию для менеджеров и RAG-агента для адаптации стажёров.
+\end{itemize}
+
+\textbf{Платформа аналитики коммерческой недвижимости \textbar{} крупное агентство недвижимости} \hfill \textit{авг 2024 -- авг 2025}
+\begin{itemize}
+  \item Разрабатывал backend и автоматизации для платформы, которая объединяла данные аукционов, CIAN, геокодинг, Telegram-бота, административную панель и каталог объектов.
+  \item Дал риэлторам возможность оценивать экономику объекта примерно за 10 минут: прибыль по продаже и аренде, ключевые метрики, денежный поток, доходность и срок окупаемости.
+  \item Реализовал анализ рынка по конкретному району за 7--10 минут и улучшил ежедневную работу через админ-панель и структурированный каталог.
+\end{itemize}
+
+\textbf{Фриланс-проекты в бэкенде и автоматизации} \hfill \textit{июн 2023 -- н.в.}
+\begin{itemize}
+  \item Разрабатывал Double Kiss, Telegram Mini App для бильярдного клуба с бронированиями, webhook-интеграцией Telegram-бота, регистрацией по контакту, backend-сервисами, Redis, PostgreSQL и автоматизацией деплоя.
+  \item Работал над связкой booking, match, Elo rating и YClients loyalty: списание и начисление бонусов, записи бронирований, подтверждение результатов и retry-механика для сбойных bonus settlement сценариев.
+  \item Разрабатывал Svobodno, MVP Telegram Mini App для бронирования скидочных горящих слотов в сервисных бизнесах с customer, partner и admin flows.
+  \item Интегрировал FastAPI backends, SQLAlchemy, Redis, Telegram bot runtime, React/Vite/Tailwind frontends, nginx, Docker Compose, tunnels и CI/CD.
+\end{itemize}
+
+\section*{Open Source}
+
+\textbf{ARC \textbar{} local-first платформа для AI-agent workflows}
+\begin{itemize}
+  \item Создал local-first среду для безопасной и воспроизводимой работы AI-агентов в кодовых проектах.
+  \item Объединил Go CLI runtime, Wails desktop shell, адаптеры к нескольким AI-провайдерам, память проекта и артефакты выполнения в одном продукте.
+  \item Реализовал управление контекстом, памятью и правилами выполнения, чтобы снизить стоимость запросов, сделать поведение агентов предсказуемее и упростить пошаговую проверку; сократил context load на 48\% без ухудшения качества.
+  \item Добавил встроенные диаграммы, мини-приложения, демо и симуляции прямо в ответы агента, чтобы результаты было проще изучать, понимать и проверять.
+\end{itemize}
+
+\section*{Образование}
+\textbf{Canisius University} \textbar{} Bachelor of Computer Science\\
+\textbf{Дополнительно:} Harvard CS50, MIT OpenCourseWare Algorithms, freeCodeCamp Java, freeCodeCamp Spring
+
+\end{document}

@@ -1,0 +1,88 @@
+% Главное резюме на 1 страницу. ATS-оптимизировано.
+% Компилировать через XeLaTeX/LuaLaTeX с пакетом fontawesome5.
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\setmainfont{Arial}
+\usepackage[a4paper,margin=0.82cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fontawesome5}
+
+\urlstyle{same}
+\setlist[itemize]{leftmargin=1.0em,itemsep=0.22em,topsep=0.22em,parsep=0em,partopsep=0em}
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}[\vspace{0.20em}\titlerule]
+\titlespacing*{\section}{0pt}{0.85em}{0.50em}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\emergencystretch=2em
+
+\newcommand{\contactsep}{\enspace\textbar\enspace}
+\newcommand{\social}[2]{\href{#1}{#2}}
+
+\begin{document}
+\fontsize{8.85pt}{10.35pt}\selectfont
+
+\begin{center}
+{\LARGE \textbf{Артем Сиднев}}\\[-0.02em]
+{\normalsize Backend / Platform Engineer \textbar{} Java, Kotlin, Spring Boot, ClickHouse, AI Automation}\\[0.26em]
+{\footnotesize
+\href{mailto:a.sidnevart@gmail.com}{\faEnvelope\ a.sidnevart@gmail.com}
+\contactsep \social{https://t.me/sidnevart}{\faTelegram}
+\contactsep \social{https://www.linkedin.com/in/artem-sidnev}{\faLinkedin}
+\contactsep \social{https://github.com/sidnevart}{\faGithub}
+\contactsep \social{https://sidnev.dev}{\faGlobe}
+}
+\end{center}
+
+\vspace{0.05em}
+
+\section*{Кратко}
+Backend / Platform Engineer с 3+ годами опыта в data-intensive сервисах, внутренних платформах и AI-инструментах. Сильные стороны: Java/Kotlin, Spring Boot, ClickHouse, PostgreSQL, Kafka, Redis, Kubernetes, Docker, GitLab CI/CD, FastAPI, gRPC, REST APIs, microservices, AI agents, RAG, LLM applications, n8n, Telegram Mini Apps. Текущий фокус: банковская платформа cashback targeting, partner-funded offers, аналитика, надежность и developer productivity.
+
+\section*{Ключевые навыки}
+\textbf{Backend:} Java, Kotlin, Go, Python, TypeScript, Spring Boot, FastAPI, gRPC, REST APIs, Microservices, SQLAlchemy \\
+\textbf{Data \& Infra:} PostgreSQL, ClickHouse, Kafka, Redis, Docker, Kubernetes, GitLab CI/CD, Grafana, nginx \\
+\textbf{AI / Automation:} AI Agents, RAG, LangChain, OpenAI, LLM Applications, n8n, AI Code Review, CI Refactoring Bots, Developer Productivity \\
+\textbf{Интеграции:} React, Next.js, Telegram Mini Apps, Telegram Bot API, YClients API, WebSocket
+
+\section*{Опыт}
+
+\textbf{Software Engineer (Backend) \textbar{} T-Bank} \hfill \textit{янв 2025 -- н.в.}
+\begin{itemize}
+  \item Лидировал разработку backend платформы cashback targeting на Java/Kotlin/Go/Spring Boot: обработка аудиторий партнеров, доставка partner-funded offers, gRPC/microservices. Таргетинг по тратам/доходам клиентов на потоке 30M транзакций/день, 1.5 года истории; годовой бизнес-эффект \$600K+.
+  \item Миграция сборки аудиторий в ClickHouse-as-a-Service: ускорение критичного сценария в 5x, вынесение нестандартной обработки из legacy. Автоматизация подстановки регионов партнеров: 40--60 часов ручной работы/мес. Ранняя валидация сценариев: сокращение диагностики на 20--40 мин. Удалено 80\% legacy-кода, достигнуто полное покрытие документацией.
+  \item CI/CD: ускорение pipeline на 30\% (20 мин/ран), устранение всех flaky tests.
+  \item AI-инструменты: code review (экономия 35\% времени, +120 issues/нед), CI refactor bot, RAG onboarding (-40\% время онбординга, -60\% перерывы senior dev), n8n campaign automation (-70\% время настройки), персонализированный AI-ассистент рекомендаций, bank-wide code agent skills library. AI Office (OpenClaw + Grafana): снижение token costs на 60\%, рост engagement на 40\%, экономия 8+ часов анализа/нед. Kubernetes cluster management.
+\end{itemize}
+
+\textbf{Backend \& Automation Engineer \textbar{} Крупное агентство недвижимости} \hfill \textit{авг 2024 -- авг 2025}
+\begin{itemize}
+  \item Платформа аналитики коммерческой недвижимости: интеграция данных аукционов и CIAN, геокодинг, Telegram-бот, админ-панель, каталог объектов. Экономика объекта за 10 мин, анализ района за 7--10 мин. Сокращение ручного сбора данных на 90\%.
+\end{itemize}
+
+\textbf{Backend \& Automation Engineer \textbar{} Freelance / Pet Projects} \hfill \textit{май 2022 -- н.в.}
+\begin{itemize}
+  \item Svobodno (URVI): Telegram Mini App для last-minute бронирования (Go/Python, FastAPI, PostgreSQL, Redis, React, YClients). 3 крупных партнера, снижение vacancy слотов на 35\%, рост partner revenue на 20\%, повышение conversion на 25\%.
+  \item Double Kiss: booking, match, Elo rating, loyalty flows, webhook integration, bonus settlement, retry handling.
+\end{itemize}
+
+\section*{Избранные проекты}
+\textbf{ARC \textbar{} Local-First AI Agent Platform (Go, Wails)} \hfill \textit{Open Source}
+\begin{itemize}
+  \item Среда для воспроизводимой работы AI-агентов с provider adapters, project memory, execution artifacts, context controls. Сокращение context load на 48\% без потери качества.
+\end{itemize}
+\textbf{ProofForge \textbar{} Peer Accountability Platform (Go, Next.js, PostgreSQL, pgvector, Redis, MinIO)} \hfill \textit{Open Source}
+\begin{itemize}
+  \item Платформа goal tracking, proof workflows, AI growth dossiers, team workspaces, 1:1 и review readiness. Peer accountability повысила goal completion на 45\%, AI dossiers экономят 5+ часов на подготовку к 1:1.
+\end{itemize}
+
+\section*{Образование}
+\textbf{Central University Moscow} \textbar{} Bachelor of Computer Science \hfill \textit{Дополнительно: Harvard CS50, MIT OCW Algorithms, freeCodeCamp Java/Spring}
+
+\end{document}

@@ -1,0 +1,82 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,margin=1.12cm]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlist[itemize]{leftmargin=1.02em,itemsep=0.07em,topsep=0.07em,parsep=0em,partopsep=0em}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\emergencystretch=1em
+
+\begin{document}
+\small
+
+\begin{center}
+{\LARGE \textbf{Artem Sidnev}}\\[0.20em]
+{\normalsize Software Engineer (Backend)}\\[0.35em]
+{\footnotesize
+\href{mailto:a.sidnevart@gmail.com}{a.sidnevart@gmail.com}
+\enspace\textbar\enspace
+\href{https://t.me/sidnevart}{Telegram}
+\enspace\textbar\enspace
+\href{https://www.linkedin.com/in/artem-sidnev}{LinkedIn}
+\enspace\textbar\enspace
+\href{https://github.com/sidnevart}{GitHub}
+\enspace\textbar\enspace
+\href{https://habr.com/ru/users/sidnevart/}{Habr}
+\enspace\textbar\enspace
+\href{https://x.com/ArtemkaWeb3}{X/Twitter}
+}
+\end{center}
+
+\vspace{0.06em}
+
+\section*{Summary}
+Software engineer with nearly 3 years of experience across backend systems, internal platforms, workflow automation, AI-enabled products, and data-intensive services. Since January 2025, works at T-Bank on a cashback targeting platform that helps deliver the right partner-funded offers to the right customers. Also worked from August 2024 to August 2025 on a commercial real-estate analytics platform for a large real estate agency; freelance backend and automation work has been ongoing since June 2023.
+
+\section*{Experience}
+
+\textbf{Software Engineer (Backend) \textbar{} T-Bank} \hfill \textit{Jan 2025 -- Present}
+\begin{itemize}
+  \item Build backend systems for a cashback targeting platform that processes partner audience data and helps deliver relevant offers to the right customers.
+  \item Built partner-level targeting by customer spend and income on a data flow of approximately 30M transactions per day across 1.5 years of history; estimated annual business impact reached about \$600K+.
+  \item Contributed to the migration of audience-building workflows to an internal ClickHouse-as-a-Service analytical environment, making a critical scenario about 5x faster and moving non-standard processes off the legacy stack.
+  \item Automated partner-region substitution in audience setup, removing 10--15 minutes from a single run and saving up to 40--60 hours of manual work per month.
+  \item Added early validation to critical targeting scenarios, reducing diagnosis time for a typical issue by 20--40 minutes, and accelerated the main CI pipeline by 5--7 minutes (about 15--20\%).
+  \item Resolved a major incident in a document workflow service, eliminating reputation risk for the bank and helping prevent potential financial loss.
+  \item Introduced AI into internal engineering workflows: AI-assisted code review in GitLab, an AI-driven CI job for automated refactoring and draft merge request preparation, n8n automation for managers, and a RAG-based onboarding assistant for interns.
+\end{itemize}
+
+\textbf{Commercial Real Estate Analytics Platform \textbar{} Large Real Estate Agency} \hfill \textit{Aug 2024 -- Aug 2025}
+\begin{itemize}
+  \item Worked on a commercial real-estate analytics platform that combined auction data, CIAN listings, geocoding, a Telegram bot, an admin panel, and a searchable object catalog.
+  \item Enabled agency realtors to evaluate property economics in about 10 minutes, including sale and rental profitability, key property metrics, cash flow, yield, and payback period, instead of monitoring the market manually.
+  \item Enabled local market analysis for a selected district in 7--10 minutes and improved day-to-day navigation through an admin panel and a structured property catalog.
+\end{itemize}
+
+\textbf{Freelance Backend and Automation Projects} \hfill \textit{Jun 2023 -- Present}
+\begin{itemize}
+  \item Worked on freelance backend and automation projects, building practical experience in services, integrations, and process automation before and alongside product work.
+\end{itemize}
+
+\section*{Open Source}
+
+\textbf{ARC \textbar{} Local-First Platform for AI Agent Workflows}
+\begin{itemize}
+  \item Built a local-first environment for safe and reproducible AI-agent work in code projects.
+  \item Combined a Go-based CLI runtime, a Wails desktop shell, adapters for multiple AI providers, project memory, and execution artifacts in one product.
+  \item Implemented context, memory, and execution-rule management to reduce request cost, make agent behavior more predictable, and simplify step-by-step verification; reduced context load by 48\% without lowering response quality.
+  \item Embedded diagrams, mini-apps, demos, and simulations directly into agent responses, making outputs easier to explore, understand, and validate.
+\end{itemize}
+
+\section*{Stack}
+Java, Kotlin, Go, Python, TypeScript, Spring Boot, PostgreSQL, ClickHouse, Redis, Kafka, GitLab CI, n8n, RAG, AI agents, internal platforms, workflow automation, analytical services, CRM, partner integrations, backend engineering, and data-intensive systems.
+
+\section*{Education}
+\textbf{Canisius University} \textbar{} Bachelor of Computer Science\\
+\textbf{Additional coursework:} Harvard CS50, MIT OpenCourseWare Algorithms, freeCodeCamp Java, freeCodeCamp Spring
+
+\end{document}

@@ -1,0 +1,88 @@
+% Created/refined by Codex on 2026-05-14.
+% Role-specific version: Platform / DevEx / Infrastructure Automation.
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,margin=1.04cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\urlstyle{same}
+\setlist[itemize]{leftmargin=1.02em,itemsep=0.045em,topsep=0.045em,parsep=0em,partopsep=0em}
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{0.22em}{0.09em}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\emergencystretch=1.5em
+
+\begin{document}
+\small
+
+\begin{center}
+{\LARGE \textbf{Artem Sidnev}}\\[0.18em]
+{\normalsize Platform / DevEx Engineer \textbar{} CI/CD, Internal Tools, Automation, Backend Systems}\\[0.32em]
+{\footnotesize
+\href{mailto:a.sidnevart@gmail.com}{a.sidnevart@gmail.com}
+\enspace\textbar\enspace
+\href{https://t.me/sidnevart}{Telegram}
+\enspace\textbar\enspace
+\href{https://www.linkedin.com/in/artem-sidnev}{LinkedIn}
+\enspace\textbar\enspace
+\href{https://github.com/sidnevart}{GitHub}
+\enspace\textbar\enspace
+\href{https://habr.com/ru/users/sidnevart/}{Habr}
+}
+\end{center}
+
+\section*{Summary}
+Backend engineer oriented toward platform engineering, developer experience, internal tooling, CI/CD, automation, and reliability improvements. Nearly 3 years of experience improving backend workflows, reducing manual operations, stabilizing tests, documenting systems, building deployment setups, and introducing AI-assisted developer productivity tooling. Strong in GitLab CI, Docker, nginx, FastAPI, Spring Boot, PostgreSQL, Redis, ClickHouse, and practical automation.
+
+\section*{Core Skills}
+\textbf{Platform/DevEx:} internal tools, CI/CD, GitLab CI, test stabilization, documentation, workflow automation, onboarding tooling \\
+\textbf{Infrastructure:} Docker, Docker Compose, nginx, tunnels, production deployment setups, monitoring concepts, Redis, PostgreSQL \\
+\textbf{Backend:} Java, Kotlin, Python, Go, TypeScript, Spring Boot, FastAPI, REST APIs, ClickHouse, Kafka \\
+\textbf{Automation/AI:} n8n, RAG assistants, AI-assisted code review, CI-based refactoring, agent execution transparency
+
+\section*{Experience}
+
+\textbf{Software Engineer (Backend) \textbar{} T-Bank} \hfill \textit{Jan 2025 -- Present}
+\begin{itemize}
+  \item Build backend systems for a cashback targeting platform and improve internal engineering workflows around validation, CI, documentation, and automation.
+  \item Accelerated the main CI pipeline by 5--7 minutes and helped reduce flaky tests to improve development feedback cycles.
+  \item Added early validation to critical targeting scenarios, reducing diagnosis time for typical issues by 20--40 minutes.
+  \item Helped remove legacy code and covered backend processes with documentation for easier maintenance, onboarding, and knowledge transfer.
+  \item Automated partner-region substitution in audience setup, removing 10--15 minutes from a single run and saving up to 40--60 hours of manual work per month.
+  \item Introduced AI-assisted code review in GitLab, an AI-driven CI job for refactoring and draft merge request preparation, n8n automations, and a RAG onboarding assistant for interns.
+  \item Resolved a major incident in a document workflow service, eliminating reputation risk and helping prevent potential financial loss.
+  \item Migrated audience-building workflows to an internal ClickHouse-as-a-Service environment, making a critical scenario about 5x faster.
+\end{itemize}
+
+\textbf{Freelance Platform and Automation Projects} \hfill \textit{Jun 2023 -- Present}
+\begin{itemize}
+  \item Built deployable Telegram Mini App systems with FastAPI backends, PostgreSQL, Redis, React/Vite/Tailwind frontends, nginx, Docker Compose, and Telegram bot runtime.
+  \item Implemented local and public preview workflows using HTTPS LAN setup, ngrok/cloudflared-style tunnels, webhook setup scripts, and production compose configurations.
+  \item Built admin, partner, and customer flows for booking and service-slot products, including operational tooling and demo-data workflows.
+  \item Integrated YClients booking and loyalty flows with retry handling for failed bonus settlement scenarios.
+\end{itemize}
+
+\textbf{ARC \textbar{} Local-First Platform for AI Agent Workflows} \hfill \textit{Open Source}
+\begin{itemize}
+  \item Built a local-first platform for reproducible AI-agent work with a Go CLI runtime, Wails desktop shell, provider adapters, project memory, execution artifacts, and rule management.
+  \item Implemented context and execution controls to make agent behavior more predictable and reduce request cost; reduced context load by 48\% without lowering response quality.
+\end{itemize}
+
+\textbf{Commercial Real Estate Analytics Platform \textbar{} Large Real Estate Agency} \hfill \textit{Aug 2024 -- Aug 2025}
+\begin{itemize}
+  \item Built backend automation, admin tooling, Telegram workflows, and a searchable catalog for real-estate analytics.
+  \item Enabled realtors to evaluate property economics in about 10 minutes and district-level markets in 7--10 minutes.
+\end{itemize}
+
+\section*{Education}
+\textbf{Canisius University} \textbar{} Bachelor of Computer Science\\
+\textbf{Additional coursework:} Harvard CS50, MIT OpenCourseWare Algorithms, freeCodeCamp Java, freeCodeCamp Spring
+
+\end{document}

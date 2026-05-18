@@ -1,0 +1,98 @@
+% Created/refined by Codex on 2026-05-14.
+% Source files: EN/RU CVs, additional_experience.md, linkedin_profile_guide.md.
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[a4paper,margin=1.05cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\urlstyle{same}
+\setlist[itemize]{leftmargin=1.02em,itemsep=0.05em,topsep=0.05em,parsep=0em,partopsep=0em}
+\titleformat{\section}{\normalsize\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{0.24em}{0.10em}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\emergencystretch=1.5em
+
+\begin{document}
+\small
+
+\begin{center}
+{\LARGE \textbf{Artem Sidnev}}\\[0.20em]
+{\normalsize Backend Software Engineer \textbar{} Data-Intensive Systems, Internal Platforms, AI Automation}\\[0.35em]
+{\footnotesize
+\href{mailto:a.sidnevart@gmail.com}{a.sidnevart@gmail.com}
+\enspace\textbar\enspace
+\href{https://t.me/sidnevart}{Telegram}
+\enspace\textbar\enspace
+\href{https://www.linkedin.com/in/artem-sidnev}{LinkedIn}
+\enspace\textbar\enspace
+\href{https://github.com/sidnevart}{GitHub}
+\enspace\textbar\enspace
+\href{https://habr.com/ru/users/sidnevart/}{Habr}
+\enspace\textbar\enspace
+\href{https://x.com/ArtemkaWeb3}{X/Twitter}
+}
+\end{center}
+
+\vspace{0.04em}
+
+\section*{Summary}
+Backend software engineer with nearly 3 years of experience building data-intensive services, internal platforms, workflow automation, and AI-enabled engineering tools. Strong in Java/Kotlin backend development, ClickHouse-based analytical workflows, CI/CD improvement, integrations, Telegram Mini Apps, and applied AI agents. Current work at T-Bank focuses on cashback targeting and partner-funded offers; side projects include commercial real-estate analytics, booking and loyalty systems, and local-first AI-agent tooling.
+
+\section*{Core Skills}
+\textbf{Languages:} Java, Kotlin, Go, Python, TypeScript, SQL \\
+\textbf{Backend/Data:} Spring Boot, FastAPI, PostgreSQL, ClickHouse, Redis, Kafka, SQLAlchemy, REST APIs, data-intensive systems \\
+\textbf{Platforms/Automation:} GitLab CI, Docker, Docker Compose, nginx, n8n, internal platforms, workflow automation, technical documentation \\
+\textbf{AI/Agents:} RAG, AI agents, AI-assisted code review, refactoring automation, developer productivity tooling \\
+\textbf{Product Areas:} partner integrations, CRM workflows, analytics platforms, Telegram Bots, Telegram Mini Apps, YClients integrations
+
+\section*{Experience}
+
+\textbf{Software Engineer (Backend) \textbar{} T-Bank} \hfill \textit{Jan 2025 -- Present}
+\begin{itemize}
+  \item Build backend systems for a cashback targeting platform that processes partner audience data and helps deliver relevant partner-funded offers to customers.
+  \item Built partner-level targeting by customer spend and income on a flow of about 30M transactions per day across 1.5 years of history; estimated annual business impact reached about \$600K+.
+  \item Contributed to migrating audience-building workflows to an internal ClickHouse-as-a-Service analytical environment, making a critical scenario about 5x faster and moving non-standard processes off the legacy stack.
+  \item Automated partner-region substitution in audience setup, removing 10--15 minutes from a single run and saving up to 40--60 hours of manual work per month.
+  \item Added early validation to critical targeting scenarios, reducing diagnosis time for typical issues by 20--40 minutes; accelerated the main CI pipeline by 5--7 minutes.
+  \item Helped remove legacy code, stabilize test workflows, reduce flaky tests, and document backend processes for easier maintenance and onboarding.
+  \item Resolved a major incident in a document workflow service, eliminating reputation risk and helping prevent potential financial loss.
+  \item Introduced AI-assisted internal workflows: GitLab code review, AI-driven refactoring and draft merge request preparation, n8n management automation, and a RAG onboarding assistant for interns.
+\end{itemize}
+
+\textbf{Commercial Real Estate Analytics Platform \textbar{} Large Real Estate Agency} \hfill \textit{Aug 2024 -- Aug 2025}
+\begin{itemize}
+  \item Built backend and automation workflows for a platform combining auction data, CIAN listings, geocoding, a Telegram bot, an admin panel, and a searchable object catalog.
+  \item Enabled realtors to evaluate property economics in about 10 minutes, including sale and rental profitability, key metrics, cash flow, yield, and payback period.
+  \item Enabled district-level market analysis in 7--10 minutes and improved day-to-day navigation through an admin panel and structured catalog.
+\end{itemize}
+
+\textbf{Freelance Backend and Automation Projects} \hfill \textit{Jun 2023 -- Present}
+\begin{itemize}
+  \item Built Double Kiss, a Telegram Mini App for a billiards club with booking flows, bot webhook integration, contact-based registration, backend services, Redis, PostgreSQL, and deployment automation.
+  \item Worked on booking, match, Elo rating, and YClients loyalty flows, including bonus debit/credit logic, booking records, result confirmation, and retry handling for failed bonus settlement.
+  \item Built Svobodno, an MVP Telegram Mini App for booking discounted last-minute service slots with customer, partner, and admin flows.
+  \item Integrated FastAPI backends, SQLAlchemy, Redis, Telegram bot runtime, React/Vite/Tailwind frontends, nginx, Docker Compose, tunnels, and CI/CD.
+\end{itemize}
+
+\section*{Open Source}
+
+\textbf{ARC \textbar{} Local-First Platform for AI Agent Workflows}
+\begin{itemize}
+  \item Built a local-first environment for safe and reproducible AI-agent work in code projects.
+  \item Combined a Go-based CLI runtime, Wails desktop shell, adapters for multiple AI providers, project memory, and execution artifacts in one product.
+  \item Implemented context, memory, and execution-rule management to reduce request cost, make agent behavior more predictable, and simplify step-by-step verification; reduced context load by 48\% without lowering response quality.
+  \item Embedded diagrams, mini-apps, demos, and simulations directly into agent responses so outputs are easier to explore, understand, and validate.
+\end{itemize}
+
+\section*{Education}
+\textbf{Canisius University} \textbar{} Bachelor of Computer Science\\
+\textbf{Additional coursework:} Harvard CS50, MIT OpenCourseWare Algorithms, freeCodeCamp Java, freeCodeCamp Spring
+
+\end{document}
